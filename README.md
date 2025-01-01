@@ -1,3 +1,6 @@
+> [!NOTE]
+> This device-tree overlay has been merged to the official Raspberry Pi repository on 01/01/2025 and should be part of Raspberry Pi OS Bookworm with the next firmware release. Below information does still apply, but copying the pwm-gpio-fan.dtbo to /boot/firmware/overlays will not longer be necessary.
+ 
 # pwm-gpio-fan overlay
 
 Raspberry Pi device-tree overlay for a GPIO connected PWM cooling fan controlled by the software-based GPIO PWM kernel module
@@ -47,19 +50,40 @@ This made me write the **pwm-gpio-fan** overlay for my own use and publish it he
 
 There are several parameters you can specifity in the /boot/firmware/config.txt command line to customize the behaviour of the overlay:
 
-- "fan_gpio"	BCM number of the pin driving the fan, default 18 (GPIO 18)
-- "fan_temp0"	CPU temperature at which fan is started with low speed in millicelsius, default 55000 (55 °C)
-- "fan_temp1"	CPU temperature at which fan is switched to medium speed in millicelsius, default 60000  (60 °C)
-- "fan_temp2"	CPU temperature at which fan is switched to high speed in millicelsius, default 67500  (67.5 °C)
-- "fan_temp3"	CPU temperature at which fan is switched to max speed in millicelsius, default 75000  (75 °C)
-- "fan_temp0_hyst"	Temperature hysteris at which fan is stopped in millicelsius, default 5000 (resulting in 50 °C)
-- "fan_temp1_hyst"	Temperature hysteris at which fan is switched back to low speed in millicelsius, default 5000 (resulting in 55 °C)
-- "fan_temp2_hyst"	Temperature hysteris at which fan is switched back to medium speed in millicelsius, default 5000 (resulting in 62.5 °C)
-- "fan_temp3_hyst"	Temperature hysteris at which fan is switched back to high speed in millicelsius, default 5000 (resulting in 70 °C)
-- "fan_temp0_speed"	Fan speed for low cooling state in range 0 to 255, default 114 (45% PWM duty cycle)
-- "fan_temp1_speed"	Fan speed for medium cooling state in range 0 to 255, default 152 (60% PWM duty cycle)
-- "fan_temp2_speed"	Fan speed for high cooling state in range 0 to 255, default 204 (80% PWM duty cycle)
-- "fan_temp3_speed"	Fan speed for max cooling state in range 0 to 255, default 255 (100% PWM duty cycle)
+    fan_gpio                BCM number of the pin driving the fan,
+                            default 18 (GPIO 18)
+    fan_temp0               CPU temperature at which fan is started with
+                            low speed in millicelsius,
+                            default 55000 (55 °C)
+    fan_temp1               CPU temperature at which fan is switched
+                            to medium speed in millicelsius,
+                            default 60000 (60 °C)
+    fan_temp2               CPU temperature at which fan is switched
+                            to high speed in millicelsius,
+                            default 67500 (67.5 °C)
+    fan_temp3               CPU temperature at which fan is switched
+                            to max speed in millicelsius,
+                            default 75000 (75 °C)
+    fan_temp0_hyst          Temperature hysteris at which fan is stopped
+                            in millicelsius,default 5000 (resulting
+                            in 50 °C)
+    fan_temp1_hyst          Temperature hysteris at which fan is switched
+                            back to low speed in millicelsius,
+                            default 5000 (resulting in 55 °C)
+    fan_temp2_hyst          Temperature hysteris at which fan is switched
+                            back to medium speed in millicelsius,
+                            default 5000 (resulting in 62.5 °C)
+    fan_temp3_hyst          Temperature hysteris at which fan is switched
+                            back to high speed in millicelsius,
+                            default 5000 (resulting in 70 °C)
+    fan_temp0_speed         Fan speed for low cooling state in range
+                            0 to 255, default 114 (45% PWM duty cycle)
+    fan_temp1_speed         Fan speed for medium cooling state in range
+                            0 to 255, default 152 (60% PWM duty cycle)
+    fan_temp2_speed         Fan speed for high cooling state in range
+                            0 to 255, default 204 (80% PWM duty cycle)
+    fan_temp3_speed         Fan speed for max cooling state in range
+                            0 to 255, default 255 (100% PWM duty cycle)
 
 > [!NOTE]
 > Lowest temperature default is set to 55 °C, to keep the fan off when the Pi is idle. PWM duty cycles start from a rather high 45% to ensure the fan is started reliable. Many small fans have difficulties to start reliable at low duty cycle values.
